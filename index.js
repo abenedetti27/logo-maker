@@ -2,7 +2,7 @@
 
 const readline = require('readline');
 const fs = require('fs');
-const { Triangle, Circle, Square } = require('./shapes');
+const { Triangle, Circle, Square } = require('./lib/shapes');
 
 const { stdin: input, stdout: output } = require('node:process');
 
@@ -37,7 +37,7 @@ function generateLogo(text, textColor, shape, shapeColor) {
             console.log('Invalid shape selection');
             return;
     }
-    const generatedSVG = draw.svg();
+    const generatedSVG = shapeElement.render(textColor, shapeColor, text);
     fs.writeFileSync('logo.svg', generatedSVG);
     console.log('Generated SVG logo successfully!');
 }
