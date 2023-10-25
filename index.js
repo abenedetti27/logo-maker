@@ -9,10 +9,10 @@ const { stdin: input, stdout: output } = require('node:process');
 const rl = readline.createInterface({ input, output });
 
 function getUserInput() {
-    rl.question('Enter text: ', (text) => {
-        rl.question('Enter text color: ', (textColor) => {
-            rl.question('Choose a shape: ', (shape) => {
-                rl.question('Enter shape color: ', (shapeColor) => {
+    rl.question('Enter text (up to three characters): ', (text) => {
+        rl.question('Enter text color (keyword or hexidecmial number): ', (textColor) => {
+            rl.question('Choose a shape (circle, triangle, square): ', (shape) => {
+                rl.question('Enter shape color (keyword or hexidecmial number): ', (shapeColor) => {
                     rl.close();
                     generateLogo(text, textColor, shape, shapeColor);
                 });
