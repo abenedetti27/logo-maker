@@ -8,17 +8,25 @@ const { stdin: input, stdout: output } = require('node:process');
 
 const rl = readline.createInterface({ input, output });
 
-rl.question('Enter text: ', (text) => {
-    rl.question('Enter text color: ', (textColor) => {
-        rl.question('Choose a shape: ', (shape) => {
-            rl.question('Enter shape color: ', (shapeColor) => {
-                rl.close();
-                generateLogo(text, textColor, shape, shapeColor);
+function getUserInput() {
+    rl.question('Enter text: ', (text) => {
+        rl.question('Enter text color: ', (textColor) => {
+            rl.question('Choose a shape: ', (shape) => {
+                rl.question('Enter shape color: ', (shapeColor) => {
+                    rl.close();
+                    generateLogo(text, textColor, shape, shapeColor);
+                });
             });
         });
     });
-});
+}
 
-fs.writeFileSync('logo.svg', generatedSVG);
+function generateLogo(text, textColor, shape, shapeColor) {
+    const draw = svg('logo').size(300, 200);
+    const generatedSVG = draw.svg();
+    fs.writeFileSync('logo.svg', generatedSVG);
+    console.log('Generated SVG logo successfully!');
+}
 
+getUserInput();
 
